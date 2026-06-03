@@ -15,30 +15,35 @@
     in
       {
       nixosConfigurations = {
-	nixos = nixpkgs.lib.nixosSystem {
-	  inherit system;
-	  specialArgs = {
-	    inherit inputs;
-	  };
-	  modules = [
-	    ./configuration.nix
+        nixos = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            ./configuration.nix
 
-	    ({ pkgs, ... }: {
-	      environment.systemPackages = with pkgs; [
-		neovim
-	      ];
-	      programs.neovim.enable = true;
-	      programs.neovim.viAlias = true;
-	      programs.neovim.vimAlias = true;
-	    })
-	  ];
-	};
+            ({ pkgs, ... }: {
+              environment.systemPackages = with pkgs; [
+                neovim
+              ];
+              programs.neovim.enable = true;
+              programs.neovim.viAlias = true;
+              programs.neovim.vimAlias = true;
+            })
+          ];
+        };
       };
+
       homeConfigurations = {
-	vikanshu = home-manager.lib.homeManagerConfiguration {
-	  inherit pkgs;
-	  modules = [ ./home.nix ];
-	};
+        vikanshu = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          # FIX: This passes your inputs (like hyprland) to home.nix
+          extraSpecialArgs = { inherit inputs; }; 
+          modules = [ 
+            ./home.nix 
+          ];
+        };
       };
     };
 }

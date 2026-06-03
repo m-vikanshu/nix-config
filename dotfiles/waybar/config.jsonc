@@ -1,0 +1,108 @@
+/*
+
+██╗    ██╗ █████╗ ██╗   ██╗██████╗  █████╗ ██████╗
+██║    ██║██╔══██╗╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+██║ █╗ ██║███████║ ╚████╔╝ ██████╔╝███████║██████╔╝
+██║███╗██║██╔══██║  ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+╚███╔███╔╝██║  ██║   ██║   ██████╔╝██║  ██║██║  ██║
+ ╚══╝╚══╝ ╚═╝  ╚═╝   ╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+
+*/
+
+{
+  "style":"/home/vikanshu/.config/waybar/style.css",
+  "layer": "top",
+  "height": 40,
+  "spacing": 0,
+  "modules-left": [
+    "clock",
+    "hyprland/window"
+  ],
+
+  "modules-center": [
+    "hyprland/workspaces",
+  ],
+
+  "modules-right": [
+    "tray",
+    "cpu",
+    "backlight",
+    "pulseaudio",
+    "battery",
+  ],
+
+  // Modules configuration
+   "hyprland/workspaces": {
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    }
+  },
+
+
+  "hyprland/window": {
+    "format": "<span color='#191724' bgcolor='#ebbcba' > WIN </span> {class}",
+    "separate-outputs": true,
+    "tooltip": false
+  },
+
+  "tray": {
+    "icon-size": 20,
+    "spacing": 8
+  },
+
+  "cpu": {
+    "format": "<span color='#191724' bgcolor='#ea9d34'> CPU </span> {usage}%",
+    "tooltip": false,
+    "interval": 1
+  },
+
+  "backlight": {
+    // "device": "acpi_video1",
+    "format": "<span color='#191724' bgcolor='#f6c177'> BRI </span> {percent}%",
+    "tooltip": false
+  },
+
+  "pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "<span color='#191724' bgcolor='#6e6a86'> VOL </span> {volume}%",
+    "format-muted": "<span color='#191724' bgcolor='#ea6962'> MUTE </span> {volume}%",
+    "format-bluetooth": "<span color='#191724' bgcolor='#6e6a86'> BLU </span> {volume}%",
+    "format-bluetooth-muted": "<span color='#191724' bgcolor='#ea6962'> MUTE </span> {volume}%",
+    "format-source": "{volume}% ",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "tooltip": false,
+    "max-volume": 130
+  },
+
+  "battery#bat2": {
+    "bat": "BAT2"
+  },
+
+  "battery": {
+    "interval": 1,
+    "states": {
+      "good": 99,
+      "warning": 40,
+      "critical": 15
+    },
+    "format": "<span color='#191724' bgcolor='#c4a7e7'> BAT </span> {capacity}%",
+    "format-critical": "<span color='#191724' bgcolor='#cc241d'> BAT </span> {capacity}%!!",
+    "format-warning": "<span color='#191724' bgcolor='#ea9d34'> BAT </span> {capacity}%",
+    "format-full": "<span color='#191724' bgcolor='#c4a7e7'> FULL </span> {capacity}%",
+    "format-charging": "<span color='#191724' bgcolor='#c4a7e7'> POW </span> {capacity}%",
+    "format-plugged": "<span color='#191724' bgcolor='#c4a7e7'> POW </span> {capacity}%",
+    "format-alt": "<span color='#191724' bgcolor='#c4a7e7'> BAT </span> {time}",
+    "tooltip": false
+  },
+
+  "clock": {
+    // "timezone": "America/New_York",
+    "format": "<span color='#191724' bgcolor='#8ec07c'> TIME </span> {:%I:%M %p,%d %b}",
+    "tooltip": false,
+    "interval":60,
+  }
+}

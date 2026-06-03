@@ -15,6 +15,18 @@
     size = 20;
   };
 
+  xdg.enable = true;
+  xdg.configFile = {
+    "dunst".source = ./dotfiles/dunst;
+    "hypr".source = ./dotfiles/hypr;
+    "kitty".source = ./dotfiles/kitty;
+    "rofi".source = ./dotfiles/rofi;
+    "waybar".source = ./dotfiles/waybar;
+    "yazi".source = ./dotfiles/yazi;
+    "tmux".source = ./dotfiles/tmux;
+    "nvim".source = ./dotfiles/nvim;
+  };
+
   gtk = {
     enable = true;
 
