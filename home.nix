@@ -51,5 +51,7 @@
     EDITOR = "neovim";
   };
 
+  gtk.gtk4.theme = null;
+
   programs.home-manager.enable = true;
 }
